@@ -2363,26 +2363,18 @@ impl Furtherance {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_date_with_time(task_to_edit.new_start_time, new_date)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time < task_to_edit.new_stop_time
-                                {
-                                    task_to_edit.displayed_start_date = new_date;
-                                    task_to_edit.new_start_time = new_local_date_time;
-                                    task_to_edit.show_displayed_start_date_picker = false;
-                                }
+                                task_to_edit.displayed_start_date = new_date;
+                                task_to_edit.new_start_time = new_local_date_time;
+                                task_to_edit.show_displayed_start_date_picker = false;
                             }
                         }
                         EditTaskProperty::StopDate => {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_date_with_time(task_to_edit.new_stop_time, new_date)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time > task_to_edit.new_start_time
-                                {
-                                    task_to_edit.displayed_stop_date = new_date;
-                                    task_to_edit.new_stop_time = new_local_date_time;
-                                    task_to_edit.show_displayed_stop_date_picker = false;
-                                }
+                                task_to_edit.displayed_stop_date = new_date;
+                                task_to_edit.new_stop_time = new_local_date_time;
+                                task_to_edit.show_displayed_stop_date_picker = false;
                             }
                         }
                         _ => {}
@@ -2393,26 +2385,18 @@ impl Furtherance {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_date_with_time(task_to_add.start_time, new_date)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time < task_to_add.stop_time
-                                {
-                                    task_to_add.displayed_start_date = new_date;
-                                    task_to_add.start_time = new_local_date_time;
-                                    task_to_add.show_start_date_picker = false;
-                                }
+                                task_to_add.displayed_start_date = new_date;
+                                task_to_add.start_time = new_local_date_time;
+                                task_to_add.show_start_date_picker = false;
                             }
                         }
                         EditTaskProperty::StopDate => {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_date_with_time(task_to_add.stop_time, new_date)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time > task_to_add.start_time
-                                {
-                                    task_to_add.displayed_stop_date = new_date;
-                                    task_to_add.stop_time = new_local_date_time;
-                                    task_to_add.show_stop_date_picker = false;
-                                }
+                                task_to_add.displayed_stop_date = new_date;
+                                task_to_add.stop_time = new_local_date_time;
+                                task_to_add.show_stop_date_picker = false;
                             }
                         }
                         _ => {}
@@ -2427,12 +2411,16 @@ impl Furtherance {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_time_with_date(task_to_edit.new_start_time, new_time)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time < task_to_edit.new_stop_time
+                                task_to_edit.displayed_start_time = new_time;
+                                task_to_edit.new_start_time = new_local_date_time;
+                                task_to_edit.show_displayed_start_time_picker = false;
+
+                                if task_to_edit.new_stop_time - task_to_edit.new_start_time
+                                    < TimeDelta::zero()
                                 {
-                                    task_to_edit.displayed_start_time = new_time;
-                                    task_to_edit.new_start_time = new_local_date_time;
-                                    task_to_edit.show_displayed_start_time_picker = false;
+                                    task_to_edit.displayed_stop_time = new_time;
+                                    task_to_edit.new_stop_time = new_local_date_time;
+                                    task_to_edit.show_displayed_stop_time_picker = false;
                                 }
                             }
                         }
@@ -2440,12 +2428,16 @@ impl Furtherance {
                             if let LocalResult::Single(new_local_date_time) =
                                 combine_chosen_time_with_date(task_to_edit.new_stop_time, new_time)
                             {
-                                if new_local_date_time <= Local::now()
-                                    && new_local_date_time > task_to_edit.new_start_time
+                                task_to_edit.displayed_stop_time = new_time;
+                                task_to_edit.new_stop_time = new_local_date_time;
+                                task_to_edit.show_displayed_stop_time_picker = false;
+
+                                if task_to_edit.new_stop_time - task_to_edit.new_start_time
+                                    < TimeDelta::zero()
                                 {
-                                    task_to_edit.displayed_stop_time = new_time;
-                                    task_to_edit.new_stop_time = new_local_date_time;
-                                    task_to_edit.show_displayed_stop_time_picker = false;
+                                    task_to_edit.displayed_start_time = new_time;
+                                    task_to_edit.new_start_time = new_local_date_time;
+                                    task_to_edit.show_displayed_start_time_picker = false;
                                 }
                             }
                         }
