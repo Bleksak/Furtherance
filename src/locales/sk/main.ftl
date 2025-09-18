@@ -58,6 +58,7 @@ breakdown-by-selection = Rozpis podľa výberu
 total-time = Celkový čas
 earned = Zarobené
 past-week = Minulý týždeň
+this-month = Tento mesiac
 past-thirty-days = Posledných 30 dní
 past-six-months = Posledných 180 dní
 all-time = Celkový čas

@@ -58,6 +58,7 @@ breakdown-by-selection = Desglose por selección
 total-time = Tiempo total
 earned = Ganado
 past-week = Última semana
+this-month = Este mes
 past-thirty-days = Últimos 30 días
 past-six-months = Últimos 6 meses
 all-time = Todo el tiempo

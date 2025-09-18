@@ -59,6 +59,7 @@ breakdown-by-selection = Répartition par sélection
 total-time = Temps total
 earned = Gagné
 past-week = Semaine dernière
+this-month = Ce mois-ci
 past-thirty-days = Les 30 derniers jours
 past-six-months = Les 180 derniers jours
 all-time = Tout le temps

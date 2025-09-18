@@ -16,7 +16,7 @@
 
 use std::collections::HashMap;
 
-use chrono::{Datelike, Days, Duration, Local, NaiveDate, Utc};
+use chrono::{DateTime, Datelike, Days, Duration, Local, NaiveDate, TimeZone, Utc};
 use iced_aw::date_picker::Date;
 
 use crate::{
@@ -63,9 +63,10 @@ pub struct FurReport {
 
 impl FurReport {
     pub fn new() -> Self {
-        let thirty_days_ago = Utc::now()
-            .checked_sub_days(Days::new(30))
-            .unwrap_or(Utc::now());
+        let now = Utc::now();
+        let first_day_of_this_month = now.with_day0(0).unwrap();
+        let first_day_of_next_month = now.with_month0(now.month0() % 12).unwrap();
+
         let mut fur_report = FurReport {
             active_tab: TabId::Charts,
             average_earnings_chart: AverageEarningsChart::new(&[]),
@@ -73,12 +74,16 @@ impl FurReport {
             date_range_end: Local::now().date_naive(),
             date_range_start: (Local::now() - Duration::days(30)).date_naive(),
             earnings_chart: EarningsChart::new(&[]),
-            picked_date_range: Some(FurDateRange::ThirtyDays),
-            picked_end_date: Date::today(),
+            picked_date_range: Some(FurDateRange::ThisMonth),
+            picked_end_date: Date::from_ymd(
+                first_day_of_next_month.year(),
+                first_day_of_next_month.month(),
+                first_day_of_next_month.day(),
+            ),
             picked_start_date: Date::from_ymd(
-                thirty_days_ago.year(),
-                thirty_days_ago.month(),
-                thirty_days_ago.day(),
+                first_day_of_this_month.year(),
+                first_day_of_this_month.month(),
+                first_day_of_this_month.day(),
             ),
             picked_task_property_key: Some(FurTaskProperty::Title),
             picked_task_property_value: None,
@@ -108,6 +113,15 @@ impl FurReport {
                 FurDateRange::PastWeek => {
                     self.date_range_start = (Local::now() - Duration::days(7)).date_naive();
                     self.date_range_end = Local::now().date_naive();
+                }
+                FurDateRange::ThisMonth => {
+                    let now = Local::now();
+                    let first_day_of_this_month = now.with_day0(0).unwrap().date_naive();
+                    let first_day_of_next_month =
+                        now.with_month0(now.month0() % 12).unwrap().date_naive();
+
+                    self.date_range_start = first_day_of_this_month;
+                    self.date_range_end = first_day_of_next_month;
                 }
                 FurDateRange::ThirtyDays => {
                     self.date_range_start = (Local::now() - Duration::days(30)).date_naive();

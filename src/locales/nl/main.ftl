@@ -59,6 +59,7 @@ breakdown-by-selection = Uitsplitsing per selectie
 total-time = Totale tijd
 earned = Verdiend
 past-week = Afgelopen week
+this-month = Deze maand
 past-thirty-days = Afgelopen 30 dagen
 past-six-months = Afgelopen 180 dagen
 all-time = Alle tijd

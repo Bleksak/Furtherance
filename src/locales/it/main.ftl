@@ -58,6 +58,7 @@ breakdown-by-selection = Suddivisione per selezione
 total-time = Tempo totale
 earned = Guadagnato
 past-week = Ultima settimana
+this-month = Questo mese
 past-thirty-days = Ultimi 30 giorni
 past-six-months = Ultimi 180 giorni
 all-time = Tutto il tempo

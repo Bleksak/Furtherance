@@ -131,6 +131,7 @@ pub enum ChangeDB {
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub enum FurDateRange {
     PastWeek,
+    ThisMonth,
     ThirtyDays,
     SixMonths,
     AllTime,
@@ -138,8 +139,9 @@ pub enum FurDateRange {
 }
 
 impl FurDateRange {
-    pub const ALL: [FurDateRange; 5] = [
+    pub const ALL: [FurDateRange; 6] = [
         FurDateRange::PastWeek,
+        FurDateRange::ThisMonth,
         FurDateRange::ThirtyDays,
         FurDateRange::SixMonths,
         FurDateRange::AllTime,
@@ -155,6 +157,7 @@ impl std::fmt::Display for FurDateRange {
             "{}",
             match self {
                 FurDateRange::PastWeek => localization.get_message("past-week", None),
+                FurDateRange::ThisMonth => localization.get_message("this-month", None),
                 FurDateRange::ThirtyDays => localization.get_message("past-thirty-days", None),
                 FurDateRange::SixMonths => localization.get_message("past-six-months", None),
                 FurDateRange::AllTime => localization.get_message("all-time", None),

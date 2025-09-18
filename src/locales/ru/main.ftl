@@ -58,6 +58,7 @@ breakdown-by-selection = Разбивка по выбору
 total-time = Общее время
 earned = Заработано
 past-week = Последняя неделя
+this-month = Этот месяц
 past-thirty-days = Последние 30 дней
 past-six-months = Последние 180 дней
 all-time = За все время

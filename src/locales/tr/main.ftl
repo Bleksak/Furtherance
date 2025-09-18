@@ -58,6 +58,7 @@ breakdown-by-selection = Seçime Göre Dökümü
 total-time = Toplam Süre
 earned = Kazanılan
 past-week = Geçen hafta
+this-month = Bu ay
 past-thirty-days = Son 30 gün
 past-six-months = Son 180 gün
 all-time = Tüm zamanlar

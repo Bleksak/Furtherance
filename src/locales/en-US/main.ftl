@@ -59,6 +59,7 @@ breakdown-by-selection = Breakdown By Selection
 total-time = Total Time
 earned = Earned
 past-week = Past week
+this-month = This month
 past-thirty-days = Past 30 days
 past-six-months = Past 6 months
 all-time = All time

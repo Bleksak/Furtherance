@@ -58,6 +58,7 @@ breakdown-by-selection = Erittely valinnan mukaan
 total-time = Kokonaisaika
 earned = Ansaittu
 past-week = Mennyt viikko
+this-month = Tämä kuukausi
 past-thirty-days = Viimeiset 30 päivää
 past-six-months = Viimeiset 180 päivää
 all-time = Koko aika
